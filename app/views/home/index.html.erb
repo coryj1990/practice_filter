@@ -1,0 +1,28 @@
+<h1>Listing Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Name</th>
+      <th colspan="8"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.artist_id %></td>
+        <td><%= album.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% @needed_array.each do |city| %>
+  <table>
+    <tbody>
+      <td><%= city %></td>
+    </tbody>
+  </table>
+<% end %>
