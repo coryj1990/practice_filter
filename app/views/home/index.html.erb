@@ -9,7 +9,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody>   
     <% @albums.each do |album| %>
       <tr>
         <td><%= album.artist_id %></td>
@@ -19,10 +19,12 @@
   </tbody>
 </table>
 
-<% @needed_array.each do |city| %>
+
   <table>
     <tbody>
-      <td><%= link_to city, root_path(:city => city) %></td>
+      <td><%= link_to "All Cities", root_path %></td>
+      <% @needed_array.each do |city| %>
+        <td><%= link_to city, root_path(:city => city) %></td>
+      <% end %>
     </tbody>
   </table>
-<% end %>
