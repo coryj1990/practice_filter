@@ -22,7 +22,7 @@
 <% @needed_array.each do |city| %>
   <table>
     <tbody>
-      <td><%= city %></td>
+      <td><%= link_to city, root_path(:city => city) %></td>
     </tbody>
   </table>
 <% end %>

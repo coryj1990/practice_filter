@@ -3,12 +3,23 @@ require 'pry'
 class HomeController < ApplicationController
 
 	def index
-		@albums = Album.all
-		binding.pry
-		artist_array = Artist.all
-		@needed_array = Array.new
+		if params.exclude?('city')
+			artist_array = Artist.all
+			@albums = Album.all
+			binding.pry
+		else
+			artist_array = Artist.where("city = ?", params['city'])
+			albums = Array.new
+			artist_array.each_with_index do |record, index|
+				albums[index] = Album.where("artist_id = ?", record['id'])
+			end
+			@albums = albums.flatten
 
-		artist_array.each_with_index do |stuff, index|
+		end
+
+		@needed_array = Array.new
+		artist_array = Artist.all
+		artist_array.each do |stuff|
 			if @needed_array.include? stuff.city
 			else
 				@needed_array.push(stuff.city)
